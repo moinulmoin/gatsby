@@ -529,7 +529,6 @@ jobs:
       - run:
           name: Rebuild packages for windows
           command: |
-            nvs use 12.13.0
             npm install node-gyp
             npm rebuild
       - run:
