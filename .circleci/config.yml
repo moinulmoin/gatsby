@@ -529,8 +529,7 @@ jobs:
       - run:
           name: Rebuild packages for windows
           command: |
-            npm install node-gyp
-            npm rebuild
+            yarn --force
       - run:
           name: Run tests
           command: yarn jest --ci --runInBand ((yarn jest --listTests) | Foreach-Object {$_ -replace '.*\\packages', 'packages'} | Foreach-Object {$_ -replace '\\', '/'} | circleci tests split --split-by=timings)
