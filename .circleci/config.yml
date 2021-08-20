@@ -526,10 +526,11 @@ jobs:
             nvm alias default 12.13.0
             nvm use 12.13.0
             choco install yarn
-            yarn global add node-gyp
       - run:
           name: Rebuild packages for windows
-          command: npm rebuild
+          command: |
+            yarn global add node-gyp
+            npm rebuild
       - run:
           name: Run tests
           command: yarn jest --ci --runInBand ((yarn jest --listTests) | Foreach-Object {$_ -replace '.*\\packages', 'packages'} | Foreach-Object {$_ -replace '\\', '/'} | circleci tests split --split-by=timings)
