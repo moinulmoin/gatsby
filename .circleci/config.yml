@@ -529,6 +529,7 @@ jobs:
       - run:
           name: Rebuild packages for windows
           command: |
+            nvs use 12.13.0
             yarn global add node-gyp
             npm rebuild
       - run:
